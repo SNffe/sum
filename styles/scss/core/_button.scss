@@ -1,0 +1,22 @@
+@charset 'utf-8';
+
+@import 'setting.scss';
+
+@mixin button( $width: 200px, 
+                $height: 40px, 
+                $line-height: 40px,
+                $font-size: $baseFontSize,
+                $color: $white, 
+                $bgcolor: $gray, 
+                $radius: 2px
+                ) {
+    @include center-block();
+    display: block;
+    width: $width;
+    @include line-height($height, $line-height);
+    font-size: $font-size;
+    text-align: center;
+    background: $bgcolor;
+    color: $color;
+    border-radius: $radius;
+}

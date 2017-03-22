@@ -1,0 +1,21 @@
+@charset 'utf-8';
+
+@import '../base.scss';
+@import '../core/button.scss';
+@import '../core/loading.scss';
+
+.sf-button {
+    @include button();
+    @include prefixer(box-shadow, 1px 2px 10px red);
+}
+
+.boxx {
+    @include flexbox();
+}
+
+.line-box {
+    display: -webkit-box;
+    .sides-box1 {
+        width: 100px;
+    }
+}

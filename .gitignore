@@ -1,0 +1,16 @@
+/.idea/
+/components/
+/mulProgram/
+/program/node_modules
+*.xml
+*.zip
+*.rar
+*.via
+*.tmp
+*.err
+.sass-cache
+node_modules
+/node_modules
+/vue-demo/node_modules
+/.DS_Store
+.DS_Store
