@@ -1,0 +1,14 @@
+@charset 'utf-8';
+
+@import 'mixin.scss';
+
+// chrome 消除自动填充 input框变淡黄色
+input:-webkit-autofill { 
+    -webkit-box-shadow: 0 0 0px 1000px white inset;  
+} 
+
+.verticalcenter{
+    position: relative;
+    top: 50%;
+    @include transform(translateY(-50%)); 
+}

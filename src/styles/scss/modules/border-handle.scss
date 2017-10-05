@@ -13,12 +13,12 @@
 }
 
 .input-border {
-  width: 300px;
+  width: 260px;
   height: 50px;
   @include borderHandle(1111, #e2dede, 2px);
   .input {
     border: none;
-    width: 300px;
+    width: 260px;
     height: 50px;
   }
 }

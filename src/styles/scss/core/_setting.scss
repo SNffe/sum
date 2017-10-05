@@ -1,0 +1,21 @@
+@charset 'utf-8';
+
+$baseFontSize: 14px !default;
+
+$black:                 #000 !default;
+$grayDarker:            #333 !default;
+$grayDark:              #999 !default;
+$gray:                  #ccc !default;
+$grayLight:             #f5f5f5 !default;
+$white:                 #fff !default;
+
+
+$baseRadius:            5px !default;
+$smallRadius:           3px !default;
+
+
+$zindexDropdown:        1000 !default;
+$zindexFixedTopbar:     1010 !default;
+$zindexTooltip:         1020 !default;
+$zindexAlert:           1030 !default;
+$zindexModal:           1100 !default;

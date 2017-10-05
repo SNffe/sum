@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+//border 移动端
+.border-handle {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    pointer-events: none;
+    border: 0;
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    z-index: 100;
+
+  }
+}
+
+.ios *:before {
+  /*handle ios border-right invalide*/
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 1px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2) {
+  .border-handle:before {
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 3) {
+  .border-handle:before {
+    width: 300%;
+    height: 300%;
+    transform: scale(0.3333);
+    -webkit-transform: scale(0.3333);
+  }
+}
+
+@mixin borderHandle($borderWidthes:1111, $borderColor:0, $radius:0) {
+  $innerWidth: 1;
+  $hasRight: false;
+
+  @if $borderColor == 0 {
+    $innerWidth: 0;
+  }
+  @if ($radius > 0) {
+    border-radius: $radius;
+  }
+  &:before {
+    @if $borderWidthes%10 == 1 {
+      border-left-width: #{$innerWidth}px;
+    }
+    @if $borderWidthes%100 >= 10 {
+      border-bottom-width: #{$innerWidth}px;
+    }
+    @if $borderWidthes%1000 >= 100 {
+      border-right-width: #{$innerWidth}px;
+      $hasRight: true;
+    }
+    @if $borderWidthes >= 1000 {
+      border-Top-width: #{$innerWidth}px;
+      $hasRight: true;
+    }
+
+    border-color: $borderColor;
+    border-style: solid;
+
+    @if ($radius > 0) {
+      border-radius: $radius;
+    }
+  }
+  @if $radius > 0 {
+    @media (-webkit-min-device-pixel-ratio: 2) {
+      &:before {
+        border-radius: $radius*2;
+      }
+    }
+    @media (-webkit-min-device-pixel-ratio: 3) {
+      &:before {
+        border-radius: $radius*3;
+      }
+    }
+  }
+}

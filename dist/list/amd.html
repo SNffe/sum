@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>amd-loadjs</title>
+
+    <link rel="stylesheet" href="../styles/scss/index.css" />
+</head>
+<body>
+<pre>
+lodjs.config({
+    baseUrl: '../scripts/list/',
+    // cache: true,
+    path: {
+        lib: '../lib'
+    }
+});
+
+lodjs.use('mod', function (mod) {
+    console.log(mod);
+});
+</pre>
+
+<h3>mod.js</h3>
+<pre>
+define('mod', ['simple'], function (simple) {
+    console.info(simple)
+    return 'mod.js'
+});
+</pre>
+
+<h3>simple.js</h3>
+<pre>
+define(function() {
+    class demo {
+        constructor(x, y) {
+            this.x = x
+            this.y = y
+        }
+        log() {
+            console.log(this.x + ' | ' + this.y)
+        }
+    }
+
+    return {
+        demo
+    };
+});
+</pre>   
+
+<script src="../scripts/list/loadjs.js"></script>
+<script>
+
+        lod.config({
+            baseUrl: '../scripts/list/',
+            // cache: true,
+            path: {
+                lib: '../lib'
+            }
+        });
+
+        lod.use('mod', function (mod) {
+            console.log(mod); 
+        });
+    </script>
+<script type="text/javascript" charset="utf-8" src="http://100.79.161.255:8132/livereload.js"></script></body>
+</html>
