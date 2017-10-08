@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PolarTest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../styles/scss/index.scss">
+    <script src="../scripts/list/mvvm.js"></script>
+</head>
+<style>
+    #app {
+        margin: 20px
+    }
+    p, .d1 {
+        line-height: 32px;
+    }
+</style>
+
+<body>
+
+<div id="app">
+    <form><label>name: </label><input p-model="name" /></form>
+    <div class="d1">name: {{name}}</div>
+    <p>age: {{age}}</p>
+    <p>note: {{note}}</p>
+    <button p-click="test(2)">age 加</button>
+</div>
+
+<br>
+<h3>借助于proxy '拦截'功能</h3>
+<pre>
+function set(target, key, value, receiver) {
+    const result = Reflect.set(target, key, value, receiver)
+
+    let dataSet = receiver || target
+    dataSet.__bindings[key].forEach(function(item) {
+        item.el[item.attr] = item.elementValue = value
+    })
+
+    return result
+}
+this.data = new Proxy(this._data, {set})
+</pre>
+
+<script>
+    var mvvm = new mvvm({
+        el:"#app",
+        data: {
+            name: "ywy",
+            age: 28,
+            note: "web front"
+        },
+        methods:{
+            test:function(e, addNumber){
+                console.log("e:",e);
+                this.data.age+=Number(addNumber);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
