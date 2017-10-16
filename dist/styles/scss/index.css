@@ -609,9 +609,8 @@ pre {
 }
 
 .p-tit {
-  height: 40px;
-  line-height: 41px;
   padding: 0 14px;
+  line-height: 41px;
 }
 
 .p-tit:before {

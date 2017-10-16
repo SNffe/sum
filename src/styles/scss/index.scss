@@ -67,8 +67,8 @@ pre {
 }
 
 .p-tit {
-    @include line-height(40px, 41px);
     padding: 0 14px; 
+    line-height: 41px;
     @include borderHandle(0010, #dcdcdc)
 }
 

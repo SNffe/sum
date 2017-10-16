@@ -11,11 +11,12 @@
     function _getErudaJs() {
         var _hostName = doc.location.hostname,
             src;
-        if (_hostName.indexOf('pre') !== -1 || _hostName.indexOf('sit') !== -1) {
-            src = '//respaypre.suning.com/epwm/scripts/loginsms/lib/eruda.min.js';
-        } else {
-            src = '//respay.suning.com/epwm/scripts/loginsms/lib/eruda.min.js';
-        }
+        // if (_hostName.indexOf('pre') !== -1 || _hostName.indexOf('sit') !== -1) {
+        //     src = '//respaypre.suning.com/epwm/scripts/loginsms/lib/eruda.min.js'
+        // } else {
+        //     src = '//respay.suning.com/epwm/scripts/loginsms/lib/eruda.min.js'
+        // }
+        src = '../scripts/lib/eruda.min.js';
         return src;
     }
 

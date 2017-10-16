@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lazeLoadExample</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .lazy-load {
+            -webkit-transition: all .8s;
+            transition: all .8s ;
+            -webkit-animation:show .5s;
+            -o-animation:show .5s;
+            animation:show .5s;
+        }
+        @keyframes show {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods001.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods001.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods001.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods001.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods001.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods001.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods001.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods001.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods001.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods002.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods003.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods004.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods005.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods006.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods007.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods008.jpg" height="640px">
+<img src="../styles/images/load.jpg" alt="img" lazy-src="../styles/images/goods009.jpg" height="640px">
+
+<script src="../scripts/list/lazy.js"></script>
+
+</body>
+</html>

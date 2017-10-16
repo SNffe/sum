@@ -6,6 +6,8 @@
  * 
  * fis3 release -wL '../dist'
  * 
+ * fis3 release -d '../dist'
+ * 
  * fis3 server stop
  */
 

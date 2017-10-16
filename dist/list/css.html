@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css</title>
+    
+
+    <style>
+        .box1 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: #ccc;    /* 方便看效果 */
+        }
+        .box2 {
+            width: 0;
+            height: 0;
+            border-width: 20px;
+            border-style: solid;
+            border-color: transparent transparent red transparent;
+        }
+        .p1 {
+    color: red;
+    background: pink;
+    width: 200px;
+    line-height: 200px;
+    text-align:center;
+    margin: 40px;
+    }
+    .div1 {
+        overflow: hidden;border:1px solid red;
+    }
+    
+
+        /* 
+        fill：类比 css 中的 background-color，给 svg 图形填充颜色；
+        stroke-width：类比 css 中的 border-width，给 svg 图形设定边框宽度；
+        stroke：类比 css 中的 border-color，给 svg 图形设定边框颜色；
+        stroke-linejoin | stroke-linecap：上文稍微提到过，设定线段连接处的样式；
+        stroke-dasharray：值是一组数组，没数量上限，每个数字交替表示划线与间隔的宽度；(控制用来描边的点划线的图案范式)
+        stroke-dashoffset：则是虚线的偏移量 
+*/
+    .g-rect-path{
+    fill: none;
+    stroke-width:10;
+    stroke:#d3dce6;
+    stroke-linejoin:round;
+    stroke-linecap:round;
+    }
+
+    .g-rect-fill{
+    fill: none;
+    stroke-width:10;
+    stroke:#ff7700;
+    stroke-linejoin:round;
+    stroke-linecap:round;
+    stroke-dasharray: 0, 1370;
+    stroke-dashoffset: 0;
+    animation: lineMove 2s ease-out infinite;
+    }
+
+    @keyframes lineMove {
+    0%{
+    stroke-dasharray: 0, 1350;
+    }
+    100%{
+    stroke-dasharray: 1350, 1350;
+    }
+    }
+</style>
+</head>
+<body>
+    <!-- <div class="box1">
+
+    </div> -->
+   <div class="box2"></div>
+   <div class="div1">
+    <p class="p1">1</p>
+    <p class="p1">2</p></div>
+    
+    <!--
+
+        version： 表示 <svg> 的版本，目前只有 1.0，1.1 两种
+        xmlns：http://www.w3.org/2000/svg 固定值
+        xmlns:xlink：http://www.w3.org/1999/xlink 固定值
+        xml:space：preserve 固定值，上述三个值固定，表示命名空间，当数据单独存在svg文件内时，这3个值不能省略
+        class：就是我们熟悉的 class
+        width | height： 定义 svg 画布的大小
+        viewbox： 定义了画布上可以显示的区域，当 viewBox 的大小和 svg 不同时，viewBox 在屏幕上的显示会缩放至 svg 同等大小（暂时可以不用理解）
+    -->
+   
+
+<script>
+        function ajax(opt) {
+            var xmlhttp
+            if(window.XMLHttpRequest){
+                xmlhttp = new XMLHttpRequest()
+            } else {
+                xmlhttp = ActiveXObject("Microsoft.XMLHTTP")
+            }
+
+            xmlhttp.onreadystatechange = function() {
+                if(xmlhttp.readystate == 4 && xmlhttp.status == 200) {
+                    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open('Get', opt.url, true)
+            xmlhttp.setRequestHeader('Content-type', "application/x-www-form-urlencoded")
+            xmlhttp.send()
+        }
+    </script>
+</body>
+</html>
