@@ -74,6 +74,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 })(undefined || window, document);
 
 !(function (win, doc, undefined) {
+
+    var LISTDATA = [{
+        name: 'mvvm',
+        url: './list/mvvm.html'
+    }, {
+        name: '简易virtualDom实现',
+        url: './list/virtualdom.html'
+    }, {
+        name: '下拉加载',
+        url: './list/pulldown.html'
+    }, {
+        name: 'AMD loadjs',
+        url: './list/amd.html'
+    }, {
+        name: '图片懒加载 (new IntersectionObserver(cb, option))',
+        url: './list/lazy.html'
+    }, {
+        name: 'console',
+        url: './list/console.html'
+    }, {
+        name: '常用居中方式',
+        url: './list/align-center.html'
+    }, {
+        name: 'footer 底部固定',
+        url: './list/footer.html'
+    }, {
+        name: 'border-handle (wap 1px border)',
+        url: './list/border-handle.html'
+    }, {
+        name: 'css3 Loading',
+        url: './list/css3loading.html'
+    }];
+
     var Page = (function () {
         function Page() {
             _classCallCheck(this, Page);
@@ -89,11 +122,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }
                     });
                 });
+                return this;
+            }
+        }, {
+            key: 'pageinit',
+            value: function pageinit() {
+
+                var len = LISTDATA.length,
+                    html = "",
+                    i = -1,
+                    name = undefined,
+                    url = undefined;
+                while (++i < len) {
+                    name = LISTDATA[i].name;
+                    url = LISTDATA[i].url;
+                    html += '<p class="p-tit border-handle" data-href="' + url + '">' + name + '</p>';
+                }
+                doc.getElementById('index-content').innerHTML = html;
+                return this;
             }
         }, {
             key: 'init',
             value: function init() {
-                this.addEvent();
+                this.pageinit().addEvent();
                 var lb = new LoadingBar();
                 window.onload = function () {
                     lb.setWidth(100);
@@ -105,4 +156,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     })();
 
     new Page().init();
+
+    function getJsonp(options) {
+
+        var callbackName = options.callbackName;
+        var url = options.url;
+
+        var scriptElem = document.createElement('script');
+        scriptElem.setAttribute('src', url + '?callback=' + callbackName);
+
+        scriptElem.onload = function (e) {
+            delete window[callbackName];
+            this.parentNode.removeChild(this);
+        };
+
+        scriptElem.onerror = function (e) {
+            console.log(e, 'load error');
+
+            delete window[callbackName];
+            this.parentNode.removeChild(this);
+        };
+
+        window[callbackName] = options.success;
+
+        // 调用
+        document.querySelector('head').appendChild(scriptElem);
+    }
 })(undefined || window, document);

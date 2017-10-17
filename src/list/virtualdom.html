@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>virtualDom</title>
+    <link rel="stylesheet" href="../styles/scss/index.scss">
+</head>
+<body>
+
+<pre>
+new VElement(
+    'div', 
+    {'id': 'container'},
+    [
+        new VElement(
+            'h1', 
+            {style: 'font-size: 28px;color: blue'}, 
+            ['simple virtal dom- h1']
+        )
+        ,
+        new VElement(
+            'p', 
+            ['Hello, p1111111111111']
+        )
+    ]
+)
+</pre>
+<p>点击按钮后: </p>
+<pre>
+new VElement(
+    'div', 
+    {'id': 'container'}, 
+    [
+        new VElement(
+            'i', 
+            {style: 'font-size: 14px;color: red'}, 
+            ['simple virtal dom- h2']
+        )
+            ,
+        new VElement(
+            'p', 
+            ['Hello, p2222222222']
+        )
+    ]
+)
+</pre>
+
+    <button id="diff">diff-dom</button>
+<!-- <script src="../scripts/vb/vb.js"></script>     -->
+<script src="../scripts/list/virtualdom.js"></script>
+<script>
+
+
+var tree = new VElement('div', {'id': 'container'}, [
+    new VElement('h1', {style: 'font-size: 28px; color: blue'}, ['simple virtal dom- h1']),
+    new VElement('p', ['Hello, p1111111111111'])
+])
+
+// 2. 通过js对象构建dom
+var root = tree.render()
+document.body.appendChild(root)
+
+
+var newTree = new VElement('div', {'id': 'container'}, [
+    new VElement('i', {style: 'font-size: 14px; color: red'}, ['simple virtal dom- h2']),
+    new VElement('p', ['Hello, p2222222222'])
+])
+
+
+document.getElementById('diff').addEventListener('click', function() {
+    var patches = diff(tree, newTree)
+
+    // 修改dom
+    patch(root, patches)
+})
+
+</script>
+</body>
+</html>

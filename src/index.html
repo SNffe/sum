@@ -13,23 +13,34 @@
     <link rel="stylesheet" href="./styles/scss/index.scss">
 </head>
 <body>
-    <div class="index-content">
+    <div class="index-content" id="index-content">
 
-        <p class="p-tit border-handle" data-href="./list/mvvm.html">mvvm</p>
+        <!-- <p class="p-tit border-handle" data-href="./list/mvvm.html">mvvm</p>
+        <p class="p-tit border-handle" data-href="./list/virtualdom.html">简易virtualDom实现</p>
         <p class="p-tit border-handle" data-href="./list/pulldown.html">下拉加载</p>
         <p class="p-tit border-handle" data-href="./list/amd.html">AMD loadjs</p>
-        <p class="p-tit border-handle" data-href="./list/lazy.html">图片懒加载 (new IntersectionObserver(callback, option))</p>
+        <p class="p-tit border-handle" data-href="./list/lazy.html">图片懒加载 (new IntersectionObserver(cb, option))</p>
         <p class="p-tit border-handle" data-href="./list/console.html">console</p>
         <p class="p-tit border-handle" data-href="./list/align-center.html">常用居中方式</p>
         <p class="p-tit border-handle" data-href="./list/footer.html">footer 底部固定</p>
         <p class="p-tit border-handle" data-href="./list/border-handle.html">border-handle (wap 1px border)</p>
-        <p class="p-tit border-handle" data-href="./list/css3loading.html">css3 Loading</p>
+        <p class="p-tit border-handle" data-href="./list/css3loading.html">css3 Loading</p> -->
 
 <!-- <pre>function name() {
     console.log(11111)
 }</pre> -->
 
     </div>
+    
+    
     <script src="./scripts/idx.js"></script>
+    <script>
+        var oo = {
+            data: 111,
+            url: "ddd"
+        }
+        var p = `<a href="${oo.url}">${oo.data}</a>`
+        console.log(p)
+    </script>
 </body>
 </html>

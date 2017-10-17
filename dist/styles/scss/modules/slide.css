@@ -1,18 +1,3 @@
-.wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.item {
-  -webkit-box-flex: 1 200px;
-  -ms-flex: 1 200px;
-  flex: 1 200px;
-  -webkit-box-ordinal-group: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;

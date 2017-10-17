@@ -7,62 +7,54 @@
 ;
 !(function ($, win, doc, undefined) {
 
-    var data = {},
+    var start,
+        end,
         el = $('#loading'),
-        maxY = 40,
-        ing = true;
+        offset = 40,
+        // 最小距离
+    isLock = false,
+        //是否锁定整个操作
+    isCanDo = false; //是否移动滑块
 
     $('body').on({
         touchstart: function touchstart(event) {
-            if (!ing) return;
-
-            var events = event.targetTouches[0] || event;
-            data.startY = events.pageY;
-
-            data.touching = true;
-            data.markY = -1;
-
-            ing = false;
+            if ($(win).scrollTop() <= 0 && !isLock) {
+                var events = event.targetTouches[0] || event;
+                start = events.pageY;
+                isLock = true;
+                isCanDo = true;
+            }
+            return false;
         },
 
         touchmove: function touchmove(event) {
-            if (!data.touching) return;
 
-            var events = event.targetTouches[0] || event,
-                nowY = events.pageY,
-                distanceY = nowY - data.startY;
+            if ($(win).scrollTop() <= 0 && isCanDo) {
+                // 页面到顶部, 并且下拉         
+                var events = event.targetTouches[0] || event;
+                end = events.pageY;
+                var distanceY = end - start;
 
-            data.distanceY = distanceY;
-
-            if ($(win).scrollTop() == 0 && distanceY > 0) {
-                // 页面到顶部, 并且下拉           
-
-                if (event.cancelable && !event.defaultPrevented) event.preventDefault(); // 判断默认行为是否已经被禁用   新版chrome passive
-
-                // 1. 先设置标志量，此标志量只有在touch释放到时候才变更
-                // 同时记忆现在滚动到位置
-                if (data.markY === -1) {
-                    data.markY = distanceY;
+                if (distanceY > 0) {
+                    if (event.cancelable && !event.defaultPrevented) event.preventDefault(); // 判断默认行为是否已经被禁用   新版chrome passive
+                    el.css({
+                        height: damping(distanceY),
+                        //  height: distanceY,
+                        // borderBottomWidth: borderBottomWidth,
+                        transition: 'none'
+                    });
                 }
-
-                el.css({
-                    height: damping(distanceY),
-                    //  height: distanceY,
-                    // borderBottomWidth: borderBottomWidth,
-                    transition: 'none'
-                }).data('loading', false);;
             }
         },
 
         touchend: function touchend() {
-            if (!data.touching) return;
-
-            if (data.markY > 0) {
-                if (data.distanceY > maxY) {
+            if (isCanDo) {
+                isCanDo = false;
+                if (end - start >= offset) {
                     el.css({
                         transition: '',
                         borderBottomWidth: 0,
-                        height: maxY
+                        height: offset
                     });
 
                     setTimeout(function () {
@@ -70,10 +62,11 @@
                             transition: '',
                             borderBottomWidth: 0,
                             height: 0
-                        }).data('loading', false);
+                        });
 
                         fnCreateList(5);
-                        ing = true;
+
+                        isLock = false;
                     }, 1200);
                 } else {
                     el.css({
@@ -81,10 +74,9 @@
                         borderBottomWidth: 0,
                         height: 0
                     });
+                    isLock = false;
                 }
             }
-
-            data.touching = false;
         }
     });
 

@@ -235,8 +235,6 @@ $prefixNo:                    true !default;
 
 @mixin flexbox() {
   display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
 }
@@ -257,14 +255,14 @@ $prefixNo:                    true !default;
   order: $val;
 }
 
-.wrapper {
-  @include flexbox();
-}
+// .wrapper {
+//   @include flexbox();
+// }
 
-.item {
-  @include flex(1 200px);
-  @include order(2);
-}
+// .item {
+//   @include flex(1);
+//   @include order(2);
+// }
 
 
 // no-touch
@@ -272,8 +270,6 @@ $prefixNo:                    true !default;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
 	user-select: none;
 }
 
