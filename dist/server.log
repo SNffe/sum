@@ -1,0 +1,15 @@
+ Listening on http://127.0.0.1:8080
+127.0.0.1 - GET / HTTP/1.1 200 2006 - 96.102 ms
+127.0.0.1 - GET /styles/scss/index.css HTTP/1.1 200 10597 - 4.681 ms
+127.0.0.1 - GET /scripts/idx.js HTTP/1.1 200 6563 - 3.773 ms
+127.0.0.1 - GET /favicon.ico HTTP/1.1 404 24 - 2.026 ms
+127.0.0.1 - GET / HTTP/1.1 200 2006 - 1.478 ms
+127.0.0.1 - GET /styles/scss/index.css HTTP/1.1 200 10597 - 2.173 ms
+127.0.0.1 - GET /scripts/idx.js HTTP/1.1 200 6563 - 1.867 ms
+127.0.0.1 - GET /favicon.ico HTTP/1.1 404 24 - 1.095 ms
+127.0.0.1 - GET /styles/scss/index.css HTTP/1.1 304 - - 1.204 ms
+127.0.0.1 - GET /styles/scss/index.css.map HTTP/1.1 200 15197 - 1.378 ms
+127.0.0.1 - GET / HTTP/1.1 200 881 - 1.031 ms
+127.0.0.1 - GET /styles/scss/index.css HTTP/1.1 200 10597 - 2.197 ms
+127.0.0.1 - GET /scripts/idx.js HTTP/1.1 200 6563 - 1.675 ms
+127.0.0.1 - GET /styles/scss/index.css.map HTTP/1.1 200 15197 - 1.201 ms
