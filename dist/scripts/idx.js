@@ -182,4 +182,86 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // 调用
         document.querySelector('head').appendChild(scriptElem);
     }
+
+    function curry(fn) {
+        var args = [];
+        return function cb() {
+            if (arguments.length === 0) {
+                return fn.apply(this, args);
+            }
+            [].push.apply(args, [].slice.call(arguments));
+            return cb;
+        };
+    }
+
+    function add() {
+        var sum = 0;
+        [].slice.call(arguments).forEach(function (value) {
+            sum += value;
+        });
+        return sum;
+    }
+    var tmp = curry(add);
+    var res = tmp(22, 33)(3);
+    console.log(res());
+
+    // console.log( add1(1)(2)(3)() )
+
+    /**
+     * 快速排序
+     * 先拿出第一个元素 作比对  分别求出leftArr 和 rightArr, 调用自身继续
+     * 
+     * 性能：
+          时间复杂度：平均时间复杂度O(nlogn)，只有在特殊情况下会是O(n^2)，不过这种情况非常少
+        空间复杂度：辅助空间是logn，所以空间复杂度为O(logn)
+     */
+    // var arr = [30, 32, 6, 24, 37];
+
+    function quickSort(arr) {
+        if (arr.length <= 1) {
+            return arr;
+        }
+        var temp = arr[0];
+        var minArr = [];
+        var maxArr = [];
+
+        for (var i = 1; i < arr.length; i++) {
+            if (arr[i] > temp) {
+                maxArr.push(arr[i]);
+            } else {
+                minArr.push(arr[i]);
+            }
+        }
+
+        var minsort = quickSort(minArr);
+        var maxsort = quickSort(maxArr);
+        var resArr = minsort.concat([temp], maxsort);
+        return resArr;
+    }
+
+    // console.log(quickSort(arr));
+
+    var arr = [1, 20, 10, 88, 12, 100, 50];
+
+    function bubbleSort(arr) {
+        var tmp;
+        for (var i = 0; i < arr.length - 1; i++) {
+            for (var j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // swap(arr, j, j+1);
+                    tmp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = tmp;
+                }
+            }
+        }
+        return arr;
+    }
+
+    // function swap(arr, i, j){
+    //   let temp = arr[i];
+    //   arr[i] = arr[j];
+    //   arr[j] = temp;
+    // }
+    // console.log(bubbleSort(arr));
 })(undefined || window, document);
